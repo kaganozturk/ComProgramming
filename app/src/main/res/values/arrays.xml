@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories">
+        <item>Choose Category</item>
+        <item>Sports</item>
+        <item>Music</item>
+        <item>Movie</item>
+        <item>Games</item>
+        <item>Theater</item>
+        <item>Travel</item>
+        <item>Art</item>
+        <item>Books</item>
+    </string-array>
+
+    <string-array name="cities">
+        <item>Choose City</item>
+        <item>Adana</item>
+        <item>Ankara</item>
+        <item>Antalya</item>
+        <item>Bolu</item>
+        <item>Bursa</item>
+        <item>Denizli</item>
+        <item>Diyarbakır</item>
+        <item>Edirne</item>
+        <item>Eskişehir</item>
+        <item>Hatay</item>
+        <item>İstanbul</item>
+        <item>Mersin</item>
+        <item>Trabzon</item>
+    </string-array>
+</resources>

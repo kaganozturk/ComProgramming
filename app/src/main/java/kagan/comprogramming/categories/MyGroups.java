@@ -12,7 +12,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import kagan.comprogramming.Addable;
 import kagan.comprogramming.Group;
 import kagan.comprogramming.GroupActivity;
 import kagan.comprogramming.GroupAdapter;
@@ -21,7 +20,7 @@ import kagan.comprogramming.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyGroups extends Fragment implements Addable {
+public class MyGroups extends Fragment {
 
 
     public static final String title = "My Groups";
@@ -30,9 +29,12 @@ public class MyGroups extends Fragment implements Addable {
     public MyGroups() {
         // Required empty public constructor
         myGroups = new ArrayList<>();
-        for (int i = 1; i < 51; i++) {
-            myGroups.add(new Group("Group " + i));
-        }
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                myGroups = DbManager.loadmyGroups(getContext(), CategoriesActivity.person);
+//            }
+//        }).start();
     }
 
 
@@ -62,8 +64,4 @@ public class MyGroups extends Fragment implements Addable {
         return title;
     }
 
-    @Override
-    public void add(Group group) {
-        myGroups.add(group);
-    }
 }

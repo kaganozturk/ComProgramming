@@ -1,26 +1,26 @@
 package kagan.comprogramming;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText username, password;
+    boolean isValid;
+    Person person;
 
-    // TODO: 2.05.2017 new group
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextView textView = (TextView) findViewById(R.id.invalid);
-        textView.setVisibility(View.INVISIBLE);
 
 
         username = (EditText) findViewById(R.id.username);
@@ -30,12 +30,11 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isUserValid(username.getText().toString(), password.getText().toString())) {
-                    Intent intent = new Intent(MainActivity.this, Categories.class);
-                    startActivity(intent);
-                } else {
-                    textView.setVisibility(View.VISIBLE);
-                }
+                person = new Person();
+                person.setNickname(username.getText().toString());
+                person.setPassword(password.getText().toString());
+                isUserValid();
+
 
             }
         });
@@ -52,11 +51,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public boolean isUserValid(String username, String password) {
-        String personUsername = "";
-        String personPassword = "";
+    public void isUserValid() {
 
-        return username.equals(personUsername) && password.equals(personPassword);
+        new AsyncTask<Void, Void, Boolean>() {
+            @Override
+            protected Boolean doInBackground(Void... voids) {
+
+                return DbManager.loadUser(MainActivity.this, person);
+            }
+
+            @Override
+            protected void onPostExecute(Boolean a) {
+                super.onPostExecute(a);
+                isValid = a;
+                if (isValid) {
+                    Intent intent = new Intent(MainActivity.this, CategoriesActivity.class);
+                    intent.putExtra("user", person);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "The email or password you entered is invalid", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }.execute();
+
     }
 
 }

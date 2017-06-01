@@ -13,8 +13,7 @@ public class MembersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list);
-
-        ArrayList<Person> members = (ArrayList<Person>) getIntent().getSerializableExtra("arraylist");
+        ArrayList<Person> members = new ArrayList<>();
 
         PersonAdapter personAdapter = new PersonAdapter(this, members);
 

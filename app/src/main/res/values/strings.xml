@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">ComOUT</string>
-    <string name="facebook">Facebook</string>
     <string name="sign_in">Sign in</string>
     <string name="password">Password</string>
     <string name="sign_up">Sign Up</string>
