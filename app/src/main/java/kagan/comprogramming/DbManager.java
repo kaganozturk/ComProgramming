@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class DbManager {
 
-    static final String DB_URL = "jdbc:mysql://192.168.1.22:3306/project";
+    static final String DB_URL = "jdbc:mysql://192.168.137.1:3306/project";
 
 
     public static void createGroup(Context context, Group group) {
